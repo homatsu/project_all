@@ -1,0 +1,43 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.App {
+  background-color: #707f8c;
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 2fr;
+  grid-template-areas:
+    'appMenu appSubmenu'
+    'appCalendar appDisplayPanel'
+    'appCalendar appDisplayPanel';
+}
+
+@media all and (max-width: 952px) {
+  .App {
+    height: 200vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr 3fr;
+    grid-template-areas:
+      'appMenu'
+      'appCalendar'
+      'appDisplayPanel';
+  }
+}
+
+.appSubmenu {
+  grid-area: appSubmenu;
+}
+
+.appDisplayPanel {
+  grid-area: appDisplayPanel;
+}
+
+.contextMenuDiv {
+  position: absolute;
+  opacity: 0;
+  background-color: rgb(255, 255, 255);
+}
