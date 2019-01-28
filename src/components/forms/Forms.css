@@ -1,0 +1,35 @@
+.textInputDiv {
+  margin: 5px;
+  font-family: sans-serif;
+  position: relative;
+  width: 230px;
+}
+
+.textInput {
+  padding: 10px 7px;
+  border: 2px solid #e9eaee;
+  color: #ed4a29;
+  font-size: 15px;
+  width: calc(100% - 18px);
+}
+
+.textInput:focus {
+  background-color: #e9eaee;
+  outline: none;
+  border-color: #e9eaee;
+}
+
+.textInputError {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  z-index: 1;
+  height: 41px;
+  padding: 0px 4px;
+  width: 115px;
+  margin-left: 5px;
+  background-color: #f16767;
+  color: white;
+  text-align: center;
+  line-height: 20px;
+}

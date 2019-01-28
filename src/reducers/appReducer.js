@@ -3,7 +3,8 @@ import {
   HIDE_CONTEXTMENU,
   ADD_FRAME,
   ADD_MEMORY,
-  REMOVE_FRAME
+  REMOVE_FRAME,
+  UPDATE_MEMORY
 } from "../actions/types";
 
 const initialState = {
@@ -50,6 +51,14 @@ export default function(state = initialState, action) {
         framesMemory: state.framesMemory.filter(
           memory => memory.frameId !== action.payload
         )
+      };
+    case UPDATE_MEMORY:
+      return {
+        ...state,
+        framesMemory: state.framesMemory.map(element => {
+          if (element.frameId === action.payload.frameId) return action.payload;
+          return element;
+        })
       };
     default:
       return state;

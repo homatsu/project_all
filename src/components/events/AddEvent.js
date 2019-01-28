@@ -2,13 +2,15 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
+import TextInput from "./../forms/TextInput";
 import { addMemory, updateMemory } from "./../../actions/appActions";
 
 class AddEvent extends Component {
   state = {
-    test: "Takie testowy content          ",
-    test2: " i taki         ",
-    frameId: this.props.frameId
+    frameId: this.props.frameId,
+    name: "",
+    description: "",
+    errors: {}
   };
 
   componentWillMount() {
@@ -24,19 +26,52 @@ class AddEvent extends Component {
   }
 
   componentWillUnmount() {
+    console.log(this.state);
     this.props.updateMemory(this.state);
   }
 
-  render() {
-    return (
-      <div>
-        <h2>AddEvent</h2>
-        <form>
-          <label htmlFor="name">Nazwa</label>
-          <input type="name" name="name" />
+  onChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value,
+      errors: { [e.target.name]: "" }
+    });
+  };
 
-          <label htmlFor="desc">Opis</label>
-          <input type="text" name="desc" />
+  onSubmit = e => {
+    e.preventDefault();
+
+    const { name } = this.state;
+
+    if (name === "") {
+      this.setState({ errors: { name: "Nazwa wymagana" } });
+      return;
+    }
+  };
+  render() {
+    const { name, description, errors } = this.state;
+
+    return (
+      <div style={{ backgroundColor: "white" }}>
+        <h2>AddEvent</h2>
+        <form onSubmit={this.onSubmit}>
+          <TextInput
+            label="Nazwa"
+            showLabel={false}
+            name="name"
+            placeholder="Nazwa"
+            value={name}
+            onChange={this.onChange}
+            error={errors.name}
+          />
+          <TextInput
+            label="Opis"
+            showLabel={false}
+            name="description"
+            placeholder="Opis"
+            value={description}
+            onChange={this.onChange}
+            error={errors.description}
+          />
 
           <label htmlFor="desc">Data</label>
           <input type="date" name="desc" />
