@@ -7,8 +7,9 @@ import Menu from "./components/layout/Menu";
 import CalendarContainer from "./components/calendar/CalendarContainer";
 // import SubMenu from './components/layout/SubMenu';
 import AddEvent from "./components/events/AddEvent";
-import CategoriesPanel from "./components/category/CategoriesPanel";
+//import CategoriesPanel from "./components/category/CategoriesPanel";
 import ContextMenu from "./components/layout/ContextMenu";
+import BoxContent from "./components/layout/BoxContent";
 
 import "./App.css";
 import "react-sortable-tree/style.css";
@@ -24,8 +25,8 @@ class App extends Component {
             {/* <SubMenu /> */}
             <div className="appDisplayPanel">
               <Switch>
-                <Route exact path="/" component={CategoriesPanel} />
-                <Route exact path="/event/add" component={AddEvent} />
+                <Route exact path="/" component={BoxContent} />
+                <Route exact path="/event/add" component={BoxContent} />
               </Switch>
             </div>
           </div>

@@ -1,9 +1,18 @@
-import { SHOW_CONTEXTMENU, HIDE_CONTEXTMENU } from '../actions/types';
+import {
+  SHOW_CONTEXTMENU,
+  HIDE_CONTEXTMENU,
+  ADD_FRAME,
+  ADD_MEMORY,
+  REMOVE_FRAME
+} from "../actions/types";
 
 const initialState = {
   contextMenuToggle: false,
   contextMenuContent: [],
-  contextMenuLocation: [0, 0]
+  contextMenuLocation: [0, 0],
+  frames: [],
+  framesMemory: [],
+  frameCurrent: {}
 };
 
 export default function(state = initialState, action) {
@@ -23,6 +32,24 @@ export default function(state = initialState, action) {
         ...state,
         contextMenuToggle: false,
         contextMenuContent: []
+      };
+    case ADD_FRAME:
+      return {
+        ...state,
+        frames: [...state.frames, action.payload]
+      };
+    case ADD_MEMORY:
+      return {
+        ...state,
+        framesMemory: [...state.framesMemory, action.payload]
+      };
+    case REMOVE_FRAME:
+      return {
+        ...state,
+        frames: state.frames.filter(frame => frame.id !== action.payload),
+        framesMemory: state.framesMemory.filter(
+          memory => memory.frameId !== action.payload
+        )
       };
     default:
       return state;
