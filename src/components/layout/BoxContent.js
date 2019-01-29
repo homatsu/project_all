@@ -27,6 +27,8 @@ class BoxContent extends Component {
     switch (content) {
       case "AddEvent":
         return <AddEvent frameId={id} />;
+      default:
+        return <AddEvent frameId={id} />;
     }
   };
 

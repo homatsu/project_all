@@ -6,7 +6,7 @@ import store from "./store";
 import Menu from "./components/layout/Menu";
 import CalendarContainer from "./components/calendar/CalendarContainer";
 // import SubMenu from './components/layout/SubMenu';
-import AddEvent from "./components/events/AddEvent";
+//import AddEvent from "./components/events/AddEvent";
 //import CategoriesPanel from "./components/category/CategoriesPanel";
 import ContextMenu from "./components/layout/ContextMenu";
 import BoxContent from "./components/layout/BoxContent";

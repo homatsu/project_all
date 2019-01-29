@@ -33,3 +33,87 @@
   text-align: center;
   line-height: 20px;
 }
+
+/* Date input */
+.dateInputNumber::-webkit-inner-spin-button,
+.dateInputNumber::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.dateInputMonth::-webkit-inner-spin-button,
+.dateInputMonth::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.dateInputDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 230px;
+  /* border: 2px solid #e9eaee; */
+  margin: 5px;
+}
+.dateInputDiv:focus {
+  background-color: #ed4a29;
+}
+
+.dateInputNumber {
+  width: 50px;
+  text-align: center;
+  color: #ed4a29;
+  padding: 10px 0px;
+  border: 2px solid #e9eaee;
+}
+.dateInputNumber:focus {
+  background-color: #e9eaee;
+  outline: none;
+}
+
+.dateInputMonth {
+  width: 90px;
+  text-align: center;
+  color: #ed4a29;
+  border: 2px solid #e9eaee;
+}
+.dateInputMonth:focus {
+  background-color: #e9eaee;
+  outline: none;
+}
+
+/* HourInput */
+.hourInputNumber::-webkit-inner-spin-button,
+.hourInputNumber::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.hourInputDiv {
+  width: 230px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.hourInputNumber {
+  text-align: center;
+  width: 50px;
+  color: #ed4a29;
+  border: 2px solid #e9eaee;
+  padding: 10px 0px;
+}
+
+.hourInputNumber:focus {
+  background-color: #e9eaee;
+  outline: none;
+}
+
+/* RangeInput */
+.durationInputDiv {
+  width: 230px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 5px;
+}

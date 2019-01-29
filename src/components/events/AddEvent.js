@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import TextInput from "./../forms/TextInput";
+import TimePicker from "./../forms/TimePicker";
+import DurationInput from "./../forms/DurationInput";
 import { addMemory, updateMemory } from "./../../actions/appActions";
 
 class AddEvent extends Component {
@@ -10,7 +12,9 @@ class AddEvent extends Component {
     frameId: this.props.frameId,
     name: "",
     description: "",
-    errors: {}
+    errors: {},
+    date: new Date(),
+    duration: 60
   };
 
   componentWillMount() {
@@ -26,7 +30,6 @@ class AddEvent extends Component {
   }
 
   componentWillUnmount() {
-    console.log(this.state);
     this.props.updateMemory(this.state);
   }
 
@@ -47,8 +50,13 @@ class AddEvent extends Component {
       return;
     }
   };
+
+  onDateChange = newDate => this.setState({ date: newDate });
+  onRangeChange = e =>
+    this.setState({ duration: parseInt(e.target.value, 10) });
+
   render() {
-    const { name, description, errors } = this.state;
+    const { name, description, errors, date } = this.state;
 
     return (
       <div style={{ backgroundColor: "white" }}>
@@ -73,15 +81,11 @@ class AddEvent extends Component {
             error={errors.description}
           />
 
-          <label htmlFor="desc">Data</label>
-          <input type="date" name="desc" />
-
-          <label htmlFor="desc">Godzina</label>
-          <input type="time" name="desc" />
-          {this.state.test}
-          {"Some default values: duration, category, type"}
-
-          {this.state.test2}
+          <TimePicker date={date} onDateChange={this.onDateChange} />
+          <DurationInput
+            duration={this.state.duration}
+            onChange={this.onRangeChange}
+          />
           <input type="submit" value="Wyśli" />
         </form>
       </div>
