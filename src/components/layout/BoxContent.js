@@ -4,19 +4,21 @@ import PropTypes from "prop-types";
 
 import BoxFrame from "./BoxFrame";
 
-import AddEvent from "./../events/AddEvent";
+import Event from "./../panels/Event";
+import Category from "./../panels/Category";
+
 import { addFrame } from "./../../actions/appActions";
 
 class BoxContent extends Component {
   componentDidMount() {
     let frame1 = {
       title: "Pierszy",
-      content: "AddEvent"
+      content: "Event"
     };
 
     let frame2 = {
       title: "Drugi",
-      content: "AddEvent"
+      content: "Category"
     };
 
     this.props.addFrame(frame1);
@@ -26,9 +28,11 @@ class BoxContent extends Component {
   choiceContent = (content, id) => {
     switch (content) {
       case "AddEvent":
-        return <AddEvent frameId={id} />;
+        return <Event />;
+      case "Category":
+        return <Category />;
       default:
-        return <AddEvent frameId={id} />;
+        return <Event frameId={id} />;
     }
   };
 
@@ -43,6 +47,7 @@ class BoxContent extends Component {
           key={"frame_" + frame.id}
           showBody={showBody}
           frameId={frame.id}
+          title={frame.title}
         >
           {this.choiceContent(frame.content, frame.id)}
         </BoxFrame>
@@ -53,14 +58,14 @@ class BoxContent extends Component {
   addMore = () => {
     let frame = {
       title: "Added",
-      content: "AddEvent"
+      content: "Event"
     };
 
     this.props.addFrame(frame);
   };
   render() {
     return (
-      <div>
+      <div style={{ width: "100%" }}>
         <h1 onClick={this.addMore.bind(this)}>AddMore</h1>
         {this.generateFrames()}
       </div>

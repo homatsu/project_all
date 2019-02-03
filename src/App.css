@@ -11,9 +11,9 @@ body {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 2fr;
   grid-template-areas:
-    'appMenu appSubmenu'
-    'appCalendar appDisplayPanel'
-    'appCalendar appDisplayPanel';
+    "appMenu appSubmenu"
+    "appCalendar appDisplayPanel"
+    "appCalendar appDisplayPanel";
 }
 
 @media all and (max-width: 952px) {
@@ -22,9 +22,9 @@ body {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 2fr 3fr;
     grid-template-areas:
-      'appMenu'
-      'appCalendar'
-      'appDisplayPanel';
+      "appMenu"
+      "appCalendar"
+      "appDisplayPanel";
   }
 }
 
@@ -34,6 +34,7 @@ body {
 
 .appDisplayPanel {
   grid-area: appDisplayPanel;
+  padding: 10px;
 }
 
 .contextMenuDiv {

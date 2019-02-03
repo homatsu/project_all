@@ -15,7 +15,7 @@ class BoxFrame extends Component {
     return (
       <div className={styles.frame}>
         <div className={styles.frameHead}>
-          Title + buttons
+          {this.props.title}
           <i className="fas fa-times" onClick={this.closeFrame.bind(this)} />
         </div>
         {this.props.showBody ? (
@@ -29,7 +29,12 @@ class BoxFrame extends Component {
 BoxFrame.propTypes = {
   showBody: PropTypes.bool,
   frameId: PropTypes.string,
-  removeFrame: PropTypes.func
+  removeFrame: PropTypes.func,
+  title: PropTypes.string
+};
+
+BoxFrame.defaultProps = {
+  title: "Kolejne okono"
 };
 
 export default connect(

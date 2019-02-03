@@ -117,3 +117,18 @@
   justify-content: space-evenly;
   margin: 5px;
 }
+
+/* Color Picker */
+.colorPickerDiv {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+}
+
+.canvasColorPicker {
+  cursor: pointer;
+}
+
+.colorDisplay {
+  width: 100px;
+}

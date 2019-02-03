@@ -1,0 +1,60 @@
+.addEventDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.formAddEvent {
+  display: flex;
+  flex-direction: column;
+  grid-area: addEventForms;
+}
+
+.formAddEventTitle {
+  background-color: #fff;
+  padding: 10px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.dailyPlanDiv {
+  background-color: #fff;
+  height: 700px;
+  position: relative;
+  grid-area: dailyPlan;
+}
+
+.eventLabelDiv {
+  position: absolute;
+  background-color: rgb(116, 112, 112);
+  /* overflow: hidden; */
+  width: 200px;
+}
+
+.eventLabelDiv:focus {
+  background-color: red;
+}
+
+.eventLabelDiv:focus .eventMenuDiv {
+  display: block;
+}
+
+.eventMenuDiv {
+  position: absolute;
+  height: 30px;
+  width: 150px;
+  line-height: 30px;
+  top: calc(50% - 15px);
+  left: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+  background-color: chartreuse;
+  display: none;
+}
+
+.eventLabelMenuIcon {
+  cursor: pointer;
+}
+
+.eventMenuDiv:focus {
+  background-color: blue;
+}

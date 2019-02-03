@@ -1,0 +1,18 @@
+.eventContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 2fr;
+  grid-template-areas:
+    "dailyPlan addEventForms"
+    "dailyPlan addEventForms"
+    "dailyPlan .";
+}
+
+.eventMenuContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Cateogry Menager HUHU */
+.categoryPanelDiv {
+}
