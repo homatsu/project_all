@@ -4,6 +4,7 @@ import uuid from "uuid";
 
 import EventLabel from "./EventLabel";
 import ConfirmBox from "../layout/ConfirmBox";
+import { CalculatePostions } from "./CalculatePostions";
 
 import "./events.css";
 
@@ -50,16 +51,26 @@ class DailyPlan extends Component {
         }
       ],
       height: 0,
-      showConfirm: false
+      width: 0,
+      showConfirm: false,
+      positions: []
     };
     this.planRef = React.createRef();
+    this.canvasRef = React.createRef();
   }
 
   componentDidMount() {
     this.setState({
       height: this.planRef.current.offsetHeight,
+      width: this.planRef.current.offsetWidth,
       data: this.state.data.sort((a, b) => a.dateStart - b.dateStart)
     });
+
+    let newPostions = CalculatePostions(
+      this.state.data,
+      this.planRef.current.offsetWidth
+    );
+    this.setState({ positions: newPostions });
 
     this.handleEditClick(this.state.data[2].id);
   }
@@ -70,21 +81,22 @@ class DailyPlan extends Component {
   };
 
   handleEditClick = id => {
-    let selectedEvent = this.state.data.filter(event => event.id === id)[0];
-    let duration = (selectedEvent.dateEnd - selectedEvent.dateStart) / 60000;
-    let formState = {
-      name: selectedEvent.name,
-      title: selectedEvent.name,
-      id,
-      date: selectedEvent.dateStart,
-      description: selectedEvent.description,
-      duration
-    };
-
-    this.props.createNewForm(formState);
+    //let selectedEvent = this.state.data.filter(event => event.id === id)[0];
+    //let duration = (selectedEvent.dateEnd - selectedEvent.dateStart) / 60000;
+    // let formState = {
+    //   name: selectedEvent.name,
+    //   title: selectedEvent.name,
+    //   id,
+    //   date: selectedEvent.dateStart,
+    //   description: selectedEvent.description,
+    //   duration
+    // };
+    //TODO: HANDLE
   };
 
   generateEvents = () => {
+    const { positions } = this.state;
+    console.log(positions);
     return this.state.data.map((event, index) => {
       return (
         <EventLabel
@@ -92,7 +104,7 @@ class DailyPlan extends Component {
           dateStart={event.dateStart}
           dateEnd={event.dateEnd}
           key={"event_" + index}
-          parentHeight={this.state.height}
+          position={positions[index]}
           onToggle={this.toggleConfirmBox.bind(this, index)}
           id={event.id}
           onEdit={this.handleEditClick}
@@ -100,6 +112,50 @@ class DailyPlan extends Component {
       );
     });
   };
+
+  generateAxis = () => {
+    const { width, height } = this.state;
+    let padding = 20;
+    // let centerWidth = width / 2;
+    let centerHeight = height / 2;
+
+    let start = 4;
+    let end = 23;
+
+    let amountsHour = end - start;
+    let perHour = (width - 2 * padding) / (amountsHour + 1);
+
+    let hours = [];
+    for (let i = 4; i <= 23; i++) {
+      let text = i + ":00";
+      hours.push(
+        <span
+          className="dailyPlanHour"
+          style={{
+            left: perHour * (i - start),
+            width: perHour
+          }}
+          key={"hour_" + i}
+        >
+          {text}
+        </span>
+      );
+    }
+
+    return (
+      <div
+        className="axisDailyPlan"
+        style={{
+          width: width - 2 * padding,
+          top: centerHeight,
+          left: padding
+        }}
+      >
+        {hours}
+      </div>
+    );
+  };
+
   render() {
     return (
       <div className="dailyPlanDiv" ref={this.planRef}>
@@ -111,15 +167,15 @@ class DailyPlan extends Component {
           Czy chesz usunąć to wydarzenie?
         </ConfirmBox>
         <h4>Plan In Here man</h4>
-        {this.state.height !== 0 ? this.generateEvents() : null}
+        {this.state.width && this.generateAxis()}
+        {this.state.height && this.generateEvents()}
       </div>
     );
   }
 }
 
 DailyPlan.propTypes = {
-  date: PropTypes.object.isRequired,
-  createNewForm: PropTypes.func.isRequired
+  date: PropTypes.object.isRequired
 };
 
 export default DailyPlan;

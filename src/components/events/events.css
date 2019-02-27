@@ -1,33 +1,118 @@
 .addEventDiv {
   display: flex;
   flex-direction: column;
+  border-radius: 6px;
+  background-color: #fafafa;
+}
+
+.formAddEventTitle {
+  background-color: #2abca7;
+  color: #fff;
+  text-align: center;
+  padding: 18px;
+  font-family: sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
 }
 
 .formAddEvent {
+  margin: 20px;
   display: flex;
   flex-direction: column;
   grid-area: addEventForms;
 }
 
-.formAddEventTitle {
-  background-color: #fff;
-  padding: 10px 10px;
-  border-radius: 3px;
+.addEvebtFormButton {
+  margin-top: 20px;
+  align-self: center;
+  background-color: #2abca7;
+  padding: 12px 45px;
+  border-radius: 5px;
+  color: #fafafa;
+  border: 1px solid #2abca7;
   cursor: pointer;
 }
 
 .dailyPlanDiv {
   background-color: #fff;
-  height: 700px;
+  height: 300px;
+  border: 1px solid black;
   position: relative;
   grid-area: dailyPlan;
 }
 
+.axisDailyPlan {
+  position: absolute;
+  top: calc(50% - 50px);
+  left: 20px;
+  border-top: 3px solid rgba(0, 0, 0, 1);
+}
+.axisDailyPlan::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: -8px;
+  right: 0;
+  transform: rotate(45deg);
+  border-top: 3px solid black;
+  border-right: 3px solid black;
+}
+
+.dailyPlanHour {
+  position: absolute;
+  text-align: center;
+  padding-top: 5px;
+}
+.dailyPlanHour::after {
+  position: absolute;
+  content: "";
+  width: 4px;
+  height: 11px;
+  top: -7px;
+  left: calc(50% - 2px);
+  background-color: #000;
+  z-index: 1;
+}
+
+.eventLabelProgressUp {
+  position: absolute;
+  bottom: calc(50% - 1px);
+  z-index: 0;
+  width: 50px;
+  height: 50px;
+
+  border-bottom: 15px solid red;
+  border-left: 5px solid black;
+}
+.eventLabelProgressUp > div {
+  top: -22px;
+}
+
+.eventLabelProgressDown {
+  position: absolute;
+  top: calc(50% - 14px);
+  z-index: 0;
+  height: 80px;
+
+  border-top: 15px solid red;
+  border-left: 5px solid black;
+}
+
+.eventLabelProgressDown > div {
+  bottom: -22px;
+}
 .eventLabelDiv {
   position: absolute;
-  background-color: rgb(116, 112, 112);
+  background-color: rgba(116, 112, 112, 0.2);
+  border: 1px solid black;
   /* overflow: hidden; */
+  right: 0;
+  z-index: 25;
   width: 200px;
+  height: 20px;
 }
 
 .eventLabelDiv:focus {
@@ -46,6 +131,7 @@
   top: calc(50% - 15px);
   left: 100%;
   padding: 0 10px;
+  z-index: 50;
   box-sizing: border-box;
   background-color: chartreuse;
   display: none;
@@ -57,4 +143,22 @@
 
 .eventMenuDiv:focus {
   background-color: blue;
+}
+
+/* More options */
+.moreOptionsContainer {
+  background-color: #fafafa;
+  border-radius: 6px;
+  margin-left: 40px;
+}
+
+.moreOptionsTitle {
+  background-color: #2abca7;
+  padding: 18px;
+  color: #fff;
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: bold;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
 }

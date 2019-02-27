@@ -6,6 +6,7 @@ import BoxFrame from "./BoxFrame";
 
 import Event from "./../panels/Event";
 import Category from "./../panels/Category";
+import Movie from "./../panels/Movie";
 
 import { addFrame } from "./../../actions/appActions";
 
@@ -18,7 +19,7 @@ class BoxContent extends Component {
 
     let frame2 = {
       title: "Drugi",
-      content: "Category"
+      content: "Movie"
     };
 
     this.props.addFrame(frame1);
@@ -31,6 +32,8 @@ class BoxContent extends Component {
         return <Event />;
       case "Category":
         return <Category />;
+      case "Movie":
+        return <Movie />;
       default:
         return <Event frameId={id} />;
     }

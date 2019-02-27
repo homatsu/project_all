@@ -132,3 +132,163 @@
 .colorDisplay {
   width: 100px;
 }
+
+/* Smart Time */
+.smartTimeDiv {
+  position: fixed;
+  z-index: 100;
+  top: 5%;
+  left: 25%;
+  border: 1px solid #383c45;
+  background-color: #515765;
+  border-radius: 6px;
+  padding: 20px;
+}
+
+.smartTimeButtons {
+  border: 1px solid #414755;
+  width: 100%;
+  border-radius: 7px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.smartTimeBtn {
+  height: 40px;
+  width: 50%;
+  background-color: #515765;
+  border: none;
+  color: #b2b8c4;
+  cursor: pointer;
+}
+
+.smartTimeSelected {
+  background-color: #414755;
+}
+/* Smart Calendar */
+
+.smartCalHead {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  font-size: 20px;
+}
+.smartCalHead > i {
+  color: #666c7a;
+  cursor: pointer;
+  font-size: 25px;
+}
+
+.smartCalHead > i:hover {
+  color: #989eae;
+}
+.smartCalTitle {
+  color: #989eae;
+}
+
+.smartCalBody {
+  text-align: center;
+}
+
+.smartCalBodyHeader {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.smartCalDayName {
+  font-size: 14px;
+  color: #7e8493;
+  font-family: sans-serif;
+  font-weight: 600;
+  width: 30px;
+}
+
+.smartCalBodyTable {
+  padding-top: 8px;
+  display: grid;
+  grid-template-columns: repeat(7, 33px);
+  grid-auto-rows: 26px;
+  grid-gap: 8px;
+  place-items: center;
+}
+
+.smartCalDay {
+  font-family: sans-serif;
+  font-size: 15px;
+  width: 30px;
+  height: 24px;
+  line-height: 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  color: #666c7a;
+
+  /* background-color: #2e323b; */
+}
+.smartCalDayAfter {
+  color: #989eae;
+}
+.smartCalDayToday {
+  text-decoration: underline;
+}
+
+.smartCalDay:hover {
+  /* //font-weight: bold; */
+  background-color: #3c4049;
+}
+
+.smartCalEmpty {
+  width: 30px;
+  height: 24px;
+}
+
+.smartCalendarSave {
+  background-color: #13a9ba;
+  border: none;
+  color: white;
+  padding: 13px;
+  width: 100%;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #10909e;
+}
+
+/* CategoryPicker */
+.categoryPickerDiv {
+  width: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  margin: 10px;
+}
+
+.categoryPickerTopBar {
+  background-color: #fefefe;
+  padding: 5px;
+}
+
+.categoryPickerList {
+  overflow: auto;
+}
+
+.categoryPickerLabel {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
+}
+
+.nestedAngleCategory {
+  width: 16px;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+}
+.nestedAngleCategory:hover {
+  background-color: #e9eaee;
+  border-radius: 5px;
+}

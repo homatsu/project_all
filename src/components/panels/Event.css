@@ -1,11 +1,11 @@
 .eventContainer {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr 2fr;
   grid-template-areas:
-    "dailyPlan addEventForms"
-    "dailyPlan addEventForms"
-    "dailyPlan .";
+    "dailyPlan"
+    "addEventForms"
+    "addEventForms";
 }
 
 .eventMenuContainer {

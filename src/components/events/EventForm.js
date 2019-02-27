@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import TextInput from "../forms/TextInput";
 import TimePicker from "../forms/TimePicker";
 import DurationInput from "../forms/DurationInput";
-
 import "./events.css";
 
 class EventForm extends Component {
@@ -14,16 +13,14 @@ class EventForm extends Component {
     ...this.props.data
   };
   onChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value,
-      errors: { [e.target.name]: "" }
-    });
+    this.setState({ errors: { [e.target.name]: "" } });
+    this.props.handleTextChange(e);
   };
 
   onSubmit = e => {
     e.preventDefault();
 
-    const { name } = this.state;
+    const { name } = this.props.data;
 
     if (name === "") {
       this.setState({ errors: { name: "Nazwa wymagana" } });
@@ -31,12 +28,8 @@ class EventForm extends Component {
     }
   };
 
-  onDateChange = newDate => this.setState({ date: newDate });
-  onRangeChange = e =>
-    this.setState({ duration: parseInt(e.target.value, 10) });
-
   generateForm = () => {
-    const { name, description, errors, date, id } = this.state;
+    const { name, description, date, id, duration } = this.props.data;
     return (
       <form onSubmit={this.onSubmit} className="formAddEvent">
         <TextInput
@@ -46,7 +39,7 @@ class EventForm extends Component {
           placeholder="Nazwa"
           value={name}
           onChange={this.onChange}
-          error={errors.name}
+          error={this.state.errors.name}
         />
         <TextInput
           label="Opis"
@@ -54,16 +47,20 @@ class EventForm extends Component {
           name="description"
           placeholder="Opis"
           value={description}
-          onChange={this.onChange}
-          error={errors.description}
+          onChange={this.props.handleTextChange}
+          error={this.state.errors.description}
         />
 
-        <TimePicker date={date} onDateChange={this.onDateChange} />
+        <TimePicker date={date} onDateChange={this.props.handleTimeChange} />
         <DurationInput
-          duration={this.state.duration}
-          onChange={this.onRangeChange}
+          duration={duration}
+          onChange={this.props.handleRangeChange}
         />
-        <input type="submit" value={id ? "Update" : "Send"} />
+        <input
+          className="addEvebtFormButton"
+          type="submit"
+          value={id ? "Update" : "Send"}
+        />
       </form>
     );
   };
@@ -85,8 +82,9 @@ class EventForm extends Component {
 
 EventForm.propTypes = {
   data: PropTypes.object.isRequired,
-  showForm: PropTypes.bool,
-  titleWidth: PropTypes.number.isRequired
+  handleTextChange: PropTypes.func.isRequired,
+  handleTimeChange: PropTypes.func.isRequired,
+  handleRangeChange: PropTypes.func.isRequired
 };
 
 EventForm.defaultProps = {

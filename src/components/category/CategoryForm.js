@@ -24,7 +24,7 @@ export class CategoryForm extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    const { title, description, color, id } = this.state;
+    const { title, description, color } = this.state;
 
     if (title === "") {
       this.setState({ error: { title: "Tytuł wymagany" } });
@@ -37,7 +37,7 @@ export class CategoryForm extends Component {
       title,
       description,
       color,
-      id: parseInt(Math.random() * (20000 - 1) + 1),
+      id: parseInt(Math.random() * (20000 - 1) + 1, 10),
       parentId: null
     });
 
