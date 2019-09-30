@@ -7,23 +7,24 @@ import BoxFrame from "./BoxFrame";
 import Event from "./../panels/Event";
 import Category from "./../panels/Category";
 import Game from "./../panels/Game";
+import TaskPanel from "./../panels/TaskPanel";
 
 import { addFrame } from "./../../actions/appActions";
 
 class BoxContent extends Component {
   componentDidMount() {
     let frame1 = {
-      title: "Pierszy",
+      title: "Trello",
       content: "Event"
     };
 
     let frame2 = {
       title: "Drugi",
-      content: "Game"
+      content: "Task"
     };
 
     this.props.addFrame(frame1);
-    //this.props.addFrame(frame2);
+    this.props.addFrame(frame2);
   }
 
   choiceContent = (content, id) => {
@@ -34,6 +35,8 @@ class BoxContent extends Component {
         return <Category />;
       case "Game":
         return <Game />;
+      case "Task":
+        return <TaskPanel />;
       default:
         return <Event frameId={id} />;
     }
