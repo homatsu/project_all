@@ -36,7 +36,7 @@ class BoxContent extends Component {
       case "Game":
         return <Game />;
       case "Task":
-        return <TaskPanel />;
+        return <TaskPanel frameId={id} />;
       default:
         return <Event frameId={id} />;
     }

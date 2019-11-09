@@ -1,0 +1,47 @@
+.smartCalContainer {
+  background-color: #fff;
+  width: 300px;
+  position: absolute;
+  top: 30px;
+}
+
+.smartInput_container {
+  border: 1px solid #000;
+  background-color: #fff;
+  position: relative;
+  display: inline-block;
+  align-self: center;
+}
+
+.smartCal_toggle {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  color: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.smartCal_toggle:hover {
+  background-color: rgb(187, 179, 179);
+}
+
+.smartInput_container:hover .smartCal_toggle {
+  color: black;
+}
+
+.smartInput_numberInput {
+  background-color: transparent;
+  margin: 0;
+  padding: 12px 5px;
+  border: none;
+  width: 40px;
+  text-align: center;
+}
+.smartInput_numberInput:focus {
+  outline: none;
+}
+.smartInput_numberInput::-webkit-outer-spin-button,
+.smartInput_numberInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}

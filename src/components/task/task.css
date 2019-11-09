@@ -1,0 +1,84 @@
+.taskPanel_container {
+  display: flex;
+  flex-direction: row;
+  height: 500px;
+}
+
+.AddTask_form {
+  display: flex;
+  flex-direction: column;
+}
+
+.AddTask_dates {
+  margin-top: 10px;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #fff;
+}
+
+.AddTask_datesSpans {
+  padding: 12px;
+  margin-right: 10px;
+  background-color: #212529;
+  color: #fff;
+  border-right: 2px solid #dee2e6;
+  border-left: 1px solid #dee2e6;
+  border-top: 1px solid #dee2e6;
+  flex-basis: 35%;
+  text-align: right;
+}
+
+. .addSummary_container {
+}
+
+.addSummary_table {
+  border-collapse: collapse;
+  width: 400px;
+  border-spacing: 0;
+  table-layout: fixed;
+  text-align: center;
+  margin: 10px;
+}
+
+.addSummary_thead {
+  background-color: #212529;
+  color: #fff;
+}
+
+.addSummary_thead th:nth-child(1) {
+  width: 10%;
+}
+.addSummary_thead th:nth-child(2) {
+  width: 45%;
+}
+.addSummary_thead th:nth-child(3) {
+  width: 45%;
+}
+
+.addSummary_thead > tr > th {
+  padding: 12px;
+  border-bottom: 2px solid #dee2e6;
+  border-top: 1px solid #dee2e6;
+}
+
+.addSummary_tbody {
+  color: #212529;
+  background-color: #fff;
+}
+
+.addSummary_tbody > tr {
+  cursor: pointer;
+}
+.addSummary_tbody > tr:hover {
+  color: #495057;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+  font-weight: bold;
+}
+
+.addSummary_tbody > tr > td {
+  padding: 12px 6px;
+  border-top: 1px solid #dee2e6;
+}

@@ -10,3 +10,6 @@ export const REMOVE_FRAME = "REMOVE_FRAME";
 export const MOVE_FRAME = "MOVE_FRAME";
 export const ADD_MEMORY = "ADD_MEMORY";
 export const UPDATE_MEMORY = "UPDATE_MEMORY";
+
+//Events Action
+export const ADD_EVENTS = "ADD_EVENTS";

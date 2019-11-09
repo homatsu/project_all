@@ -12,7 +12,7 @@ export class Game extends Component {
     results: []
   };
   render() {
-    const { searchBox, results } = this.state;
+    //const { searchBox, results } = this.state;
     return (
       <div className="categoryPanelDiv">
         <h4>Gry</h4>

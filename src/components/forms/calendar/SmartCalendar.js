@@ -1,10 +1,12 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-export class SmartCalendar extends Component {
+class SmartCalendar extends Component {
   state = {
     date: new Date(),
     dateNow: new Date()
   };
+
   generateTitle = () => {
     const { date } = this.state;
     let monthNames = [
@@ -43,13 +45,13 @@ export class SmartCalendar extends Component {
 
   generateTable = () => {
     const { date, dateNow } = this.state;
-    let day = date.getDate();
+    // let day = date.getDate();
     let month = date.getMonth();
     let year = date.getFullYear();
 
     let daysInMonth = new Date(year, month + 1, 0).getDate();
 
-    let firstMonthDay = new Date(year, month, 1).getDay();
+    let firstMonthDay = new Date(year, month, 1).getDay() - 1;
     let allDays = daysInMonth + firstMonthDay - 1;
 
     let response = [];
@@ -70,7 +72,11 @@ export class SmartCalendar extends Component {
       if (dayToday && text === dayToday) classNames += " smartCalDayToday";
 
       response.push(
-        <div key={"day_" + i} className={classNames}>
+        <div
+          key={"day_" + i}
+          className={classNames}
+          onClick={this.handleDayClick.bind(this, i)}
+        >
           {text}
         </div>
       );
@@ -78,19 +84,55 @@ export class SmartCalendar extends Component {
     return response;
   };
 
+  handleDayClick = (day, e) => {
+    console.log(day);
+    this.props.handleDateChange(
+      day,
+      this.state.date.getMonth(),
+      this.state.date.getFullYear()
+    );
+  };
+
+  handleClickOutside = e => {
+    if (
+      !this.node.contains(e.target) &&
+      e.target.dataset.id !== this.props.arrowId
+    ) {
+      this.props.toggleCalendar(e);
+    }
+  };
+  componentWillMount() {
+    document.addEventListener("mousedown", this.handleClickOutside, false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("mousedown", this.handleClickOutside, false);
+  }
+
   render() {
     return (
-      <div className="smartCalContainer">
+      <div className="smartCalContainer" ref={test => (this.node = test)}>
         <div className="smartCalHead">
-          <i className="far fa-arrow-alt-circle-left" />
+          <i
+            className="far fa-arrow-alt-circle-left"
+            onClick={() => {
+              let newDate = this.state.date;
+              newDate.setMonth(newDate.getMonth() - 1);
+              this.setState({
+                date: newDate
+              });
+            }}
+          />
           <div className="smartCalTitle">{this.generateTitle()}</div>
           <i
             className="far fa-arrow-alt-circle-right"
-            onClick={() =>
+            onClick={() => {
+              let newDate = this.state.date;
+              newDate.setMonth(newDate.getMonth() + 1);
               this.setState({
-                date: this.state.data.setMonth(2)
-              })
-            }
+                date: newDate
+              });
+            }}
           />
         </div>
         <div className="smartCalBody">
@@ -102,5 +144,11 @@ export class SmartCalendar extends Component {
     );
   }
 }
+
+SmartCalendar.propTypes = {
+  toggleCalendar: PropTypes.func.isRequired,
+  handleDateChange: PropTypes.func.isRequired,
+  arrowId: PropTypes.string.isRequired
+};
 
 export default SmartCalendar;
